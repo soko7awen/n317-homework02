@@ -1,0 +1,184 @@
+/* app/globals.css - GLOBAL STYLES FOR NEXTTRAVEL EXPLORER */
+
+/* 
+TAILWIND CSS DIRECTIVES
+These three directives are required for Tailwind CSS to work properly:
+1. @tailwind base - Resets and base styles
+2. @tailwind components - Component classes (can be customized)
+3. @tailwind utilities - All utility classes (text-center, bg-blue-500, etc.)
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+CUSTOM CSS VARIABLES
+These variables provide consistent theming across the application
+They work with both light and dark themes if needed in the future
+*/
+:root {
+  /* Primary color palette for travel theme */
+  --color-primary: #3b82f6;        /* Blue-500 */
+  --color-primary-dark: #1d4ed8;   /* Blue-700 */
+  --color-primary-light: #dbeafe;  /* Blue-100 */
+  
+  /* Neutral colors for text and backgrounds */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-600: #4b5563;
+  --color-neutral-800: #1f2937;
+  
+  /* Spacing variables for consistent layout */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+}
+
+/* 
+BASE STYLES
+These styles apply to fundamental HTML elements
+They provide consistent typography and spacing across the app
+*/
+@layer base {
+  /* Body styling for consistent font and background */
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--color-neutral-800);
+    background-color: var(--color-neutral-50);
+  }
+  
+  /* Heading styles for consistent typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+  }
+  
+  h1 { font-size: 2.5rem; }   /* 40px */
+  h2 { font-size: 2rem; }     /* 32px */
+  h3 { font-size: 1.5rem; }   /* 24px */
+  h4 { font-size: 1.25rem; }  /* 20px */
+  
+  /* Paragraph spacing */
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Link styles for better accessibility */
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  a:hover {
+    color: var(--color-primary-dark);
+  }
+  
+  /* Focus styles for keyboard navigation accessibility */
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* 
+COMPONENT STYLES
+Custom component classes that can be reused throughout the app
+These follow Tailwind's component layer pattern
+*/
+@layer components {
+  /* Card component base styles */
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  /* Button component styles */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-travel-blue-600 text-white hover:bg-travel-blue-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+  
+  /* Navigation link active state */
+  .nav-link-active {
+    @apply text-travel-blue-600 font-semibold;
+  }
+  
+  /* Container for consistent page width and padding */
+  .page-container {
+    @apply max-w-6xl mx-auto px-4 py-8;
+  }
+  
+  /* Loading spinner animation */
+  .loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-travel-blue-600;
+  }
+}
+
+/* 
+UTILITY STYLES
+Custom utilities that extend Tailwind's utility classes
+*/
+@layer utilities {
+  /* Text gradient utility for hero sections */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Smooth scrolling for anchor links */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* 
+RESPONSIVE DESIGN NOTES:
+- Tailwind's responsive prefixes (sm:, md:, lg:, xl:) are used throughout components
+- Mobile-first approach: base styles are for mobile, then enhanced for larger screens
+- Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
+
+ACCESSIBILITY FEATURES:
+- Focus styles for keyboard navigation
+- Sufficient color contrast ratios
+- Semantic HTML structure in components
+- Screen reader friendly text and labels
+
+PERFORMANCE OPTIMIZATIONS:
+- Tailwind CSS purges unused styles in production
+- CSS custom properties for consistent theming
+- Efficient transitions and animations
+- Minimal custom CSS to keep bundle size small
+*/
